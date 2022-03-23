@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager s_instance;
 
     public List<QuestionDataSO> questionList;
+    int currentQuestionIndex;
 
     public TMP_Text question;
     public AnswerButtonInfo answerButtonA;
@@ -27,10 +28,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        IniQuiz();
         StartQuiz();
     }
 
     #endregion Mono Function
+
+    private void IniQuiz()
+    {
+        questionList.Sort((a, b) => 1 - 2 * Random.Range(0, questionList.Count));
+        currentQuestionIndex = 0;
+    }
 
     private void StartQuiz()
     {
@@ -39,9 +47,30 @@ public class GameManager : MonoBehaviour
         SetSuffledAnswer();
     }
 
+    public void NextQuiz()
+    {
+        if (currentQuestionIndex == questionList.Count - 1)
+        {
+            Debug.Log("Finish quiz");
+
+            RestartQuiz();
+        }
+        else
+        {
+            currentQuestionIndex++;
+            StartQuiz();
+        }
+    }
+
+    public void RestartQuiz()
+    {
+        IniQuiz();
+        StartQuiz();
+    }
+
     private QuestionDataSO GetQuestionInList()
     {
-        return questionList[Random.Range(0, questionList.Count)];
+        return questionList[currentQuestionIndex];
     }
 
     private void SetQuestion()
@@ -57,8 +86,6 @@ public class GameManager : MonoBehaviour
         indexButtons.Add(answerButtonC);
         indexButtons.Add(answerButtonD);
         indexButtons.Sort((a, b) => 1 - 2 * Random.Range(0, indexButtons.Count));
-
-        indexButtons[0].isCorrectAnswer = true;
 
         indexButtons[0].SetInfo(currentQuestion.correctAnswer, true);
         indexButtons[1].SetInfo(currentQuestion.wrongAnswer1, false);

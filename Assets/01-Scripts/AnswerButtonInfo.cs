@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,22 +6,22 @@ public class AnswerButtonInfo : MonoBehaviour
     public bool isCorrectAnswer = false;
     public string answer = string.Empty;
 
-    private TextMeshProUGUI text;
+    private TMP_Text text;
 
     private void Awake()
     {
-        text = GetComponentInChildren<TextMeshProUGUI>();
+        text = GetComponentInChildren<TMP_Text>();
     }
 
     public void OnClick()
     {
         if (isCorrectAnswer)
         {
-            Debug.Log("correct");
+            UIManager.s_instance.ShowWinPanel();
         }
         else
         {
-            Debug.Log("worg");
+            UIManager.s_instance.ShowLosePanel();
         }
     }
 
@@ -32,11 +30,6 @@ public class AnswerButtonInfo : MonoBehaviour
         this.answer = answer;
         this.isCorrectAnswer = isCorrectAnswer;
 
-        UpdateInfo();
-    }
-
-    private void UpdateInfo()
-    {
         text.text = answer;
     }
 }
