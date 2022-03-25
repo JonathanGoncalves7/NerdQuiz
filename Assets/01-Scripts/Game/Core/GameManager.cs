@@ -11,11 +11,18 @@ public class GameManager : MonoBehaviour
     public List<QuestionDataSO> questionList;
     int currentQuestionIndex;
 
+    [Header("Question UI")]
     public TMP_Text question;
+
     public AnswerButtonInfo answerButtonA;
     public AnswerButtonInfo answerButtonB;
     public AnswerButtonInfo answerButtonC;
     public AnswerButtonInfo answerButtonD;
+
+    [Header("Audio Clip")]
+    public AudioClip ButtonClickClip;
+    public List<AudioClip> WinClipList;
+    public List<AudioClip> LoseClipList;
 
     QuestionDataSO currentQuestion;
 
@@ -91,5 +98,35 @@ public class GameManager : MonoBehaviour
         indexButtons[1].SetInfo(currentQuestion.wrongAnswer1, false);
         indexButtons[2].SetInfo(currentQuestion.wrongAnswer2, false);
         indexButtons[3].SetInfo(currentQuestion.wrongAnswer3, false);
+    }
+
+    public void VerifyClickAnswer(bool isCorrect, GameObject button)
+    {
+        StartCoroutine(this.CRVerifyClickAnswer(isCorrect, button));
+    }
+
+    IEnumerator CRVerifyClickAnswer(bool isCorrect, GameObject button)
+    {
+        AudioManager.s_instance.PlayAudio(ButtonClickClip);
+
+        yield return new WaitForSeconds(ButtonClickClip.length);
+
+        if (isCorrect)
+        {
+            AudioManager.s_instance.PlayAudio(GetRandonClip(WinClipList));
+
+            UIManager.s_instance.ShowWinPanel();
+        }
+        else
+        {
+            AudioManager.s_instance.PlayAudio(GetRandonClip(LoseClipList));
+
+            UIManager.s_instance.ShowLosePanel();
+        }
+    }
+
+    private AudioClip GetRandonClip(List<AudioClip> clipList)
+    {
+        return clipList[Random.Range(0, clipList.Count)];
     }
 }

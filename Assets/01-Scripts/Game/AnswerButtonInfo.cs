@@ -15,14 +15,7 @@ public class AnswerButtonInfo : MonoBehaviour
 
     public void OnClick()
     {
-        if (isCorrectAnswer)
-        {
-            UIManager.s_instance.ShowWinPanel();
-        }
-        else
-        {
-            UIManager.s_instance.ShowLosePanel();
-        }
+        GameManager.s_instance.VerifyClickAnswer(isCorrectAnswer, gameObject);
     }
 
     public void SetInfo(string answer, bool isCorrectAnswer)

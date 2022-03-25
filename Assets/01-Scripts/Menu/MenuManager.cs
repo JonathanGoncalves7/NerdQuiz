@@ -5,8 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public void OnCLickPlay()
+    [SerializeField] AudioClip audioButtonClick;
+
+    public void OnCLickLoadScene(int sceneIndex)
     {
-        SceneManager.LoadScene(2);
+        StartCoroutine(this.CROnCLick(sceneIndex));
+    }
+
+    IEnumerator CROnCLick(int sceneIndex)
+    {
+        AudioManager.s_instance.PlayAudio(audioButtonClick);
+
+        yield return new WaitForSeconds(audioButtonClick.length);
+
+        SceneManager.LoadScene(sceneIndex);
     }
 }
