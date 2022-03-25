@@ -14,10 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Question UI")]
     public TMP_Text question;
 
-    public AnswerButtonInfo answerButtonA;
-    public AnswerButtonInfo answerButtonB;
-    public AnswerButtonInfo answerButtonC;
-    public AnswerButtonInfo answerButtonD;
+    public List<AnswerButtonInfo> answerButtonList;
 
     [Header("Audio Clip")]
     public AudioClip ButtonClickClip;
@@ -44,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void IniQuiz()
     {
         questionList.Sort((a, b) => 1 - 2 * Random.Range(0, questionList.Count));
+
         currentQuestionIndex = 0;
     }
 
@@ -87,17 +85,12 @@ public class GameManager : MonoBehaviour
 
     private void SetSuffledAnswer()
     {
-        List<AnswerButtonInfo> indexButtons = new List<AnswerButtonInfo>();
-        indexButtons.Add(answerButtonA);
-        indexButtons.Add(answerButtonB);
-        indexButtons.Add(answerButtonC);
-        indexButtons.Add(answerButtonD);
-        indexButtons.Sort((a, b) => 1 - 2 * Random.Range(0, indexButtons.Count));
+        answerButtonList.Sort((a, b) => 1 - 2 * Random.Range(0, answerButtonList.Count));
 
-        indexButtons[0].SetInfo(currentQuestion.correctAnswer, true);
-        indexButtons[1].SetInfo(currentQuestion.wrongAnswer1, false);
-        indexButtons[2].SetInfo(currentQuestion.wrongAnswer2, false);
-        indexButtons[3].SetInfo(currentQuestion.wrongAnswer3, false);
+        answerButtonList[0].SetInfo(currentQuestion.correctAnswer, true);
+        answerButtonList[1].SetInfo(currentQuestion.wrongAnswer1, false);
+        answerButtonList[2].SetInfo(currentQuestion.wrongAnswer2, false);
+        answerButtonList[3].SetInfo(currentQuestion.wrongAnswer3, false);
     }
 
     public void VerifyClickAnswer(bool isCorrect, GameObject button)
@@ -109,7 +102,21 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.s_instance.PlayAudio(ButtonClickClip);
 
-        yield return new WaitForSeconds(ButtonClickClip.length);
+        answerButtonList.ForEach(button =>
+        {
+            button.DisableClick();
+            button.PlayClickAnimation();
+        });
+
+        yield return new WaitForSeconds(2);
+
+        answerButtonList.ForEach(button =>
+        {
+            button.StopClickAnimation();
+            button.ChangeColor();
+        });
+
+        yield return new WaitForSeconds(1);
 
         if (isCorrect)
         {
