@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class CRLoadScene : MonoBehaviour
 {
-    [SerializeField] AudioClip audioButtonClick;
-
-    public void OnCLickLoadScene(int sceneIndex)
+    public void OnCLickLoadSceneWithButtonClickAudio(int sceneIndex)
     {
         StartCoroutine(this.CROnCLick(sceneIndex));
     }
 
     IEnumerator CROnCLick(int sceneIndex)
     {
-        AudioManager.s_instance.PlaySFX(audioButtonClick);
+        AudioManager.s_instance.PlayButtonClick();
 
-        yield return new WaitForSeconds(audioButtonClick.length);
+        yield return new WaitForSeconds(AudioManager.s_instance.GetButtonClick().length);
 
         SceneManager.LoadScene(sceneIndex);
     }
