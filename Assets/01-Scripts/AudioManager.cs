@@ -6,7 +6,10 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager s_instance;
 
-    AudioSource audioSource1;
+    [SerializeField] List<AudioClip> BGMList;
+
+    AudioSource audioSourceSFX;
+    AudioSource audioSourceBGM;
 
     private void Awake()
     {
@@ -23,13 +26,25 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        audioSource1 = GetComponent<AudioSource>();
+        audioSourceSFX = GetComponents<AudioSource>()[0];
+        audioSourceBGM = GetComponents<AudioSource>()[1];
+
+        PlayBGM(BGMList[Random.Range(0, BGMList.Count)]);
     }
 
-    public void PlayAudio(AudioClip clip)
+    public void PlaySFX(AudioClip clip)
     {
-        audioSource1.Stop();
-        audioSource1.clip = clip;
-        audioSource1.Play();
+        audioSourceSFX.Stop();
+        audioSourceSFX.volume = PlayerPrefs.GetFloat("VOLUME_SFX", 1);
+        audioSourceSFX.clip = clip;
+        audioSourceSFX.Play();
+    }
+
+    public void PlayBGM(AudioClip clip)
+    {
+        audioSourceBGM.Stop();
+        audioSourceBGM.volume = PlayerPrefs.GetFloat("VOLUME_BGM", 1);
+        audioSourceBGM.clip = clip;
+        audioSourceBGM.Play();
     }
 }

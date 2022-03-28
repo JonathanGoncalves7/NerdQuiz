@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator CROnCLick(int sceneIndex)
     {
-        AudioManager.s_instance.PlayAudio(audioButtonClick);
+        AudioManager.s_instance.PlaySFX(audioButtonClick);
 
         yield return new WaitForSeconds(audioButtonClick.length);
 

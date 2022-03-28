@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CRVerifyClickAnswer(bool isCorrect, GameObject button)
     {
-        AudioManager.s_instance.PlayAudio(ButtonClickClip);
+        AudioManager.s_instance.PlaySFX(ButtonClickClip);
 
         answerButtonList.ForEach(button =>
         {
@@ -120,13 +120,13 @@ public class GameManager : MonoBehaviour
 
         if (isCorrect)
         {
-            AudioManager.s_instance.PlayAudio(GetRandonClip(WinClipList));
+            AudioManager.s_instance.PlaySFX(GetRandonClip(WinClipList));
 
             UIManager.s_instance.ShowWinPanel();
         }
         else
         {
-            AudioManager.s_instance.PlayAudio(GetRandonClip(LoseClipList));
+            AudioManager.s_instance.PlaySFX(GetRandonClip(LoseClipList));
 
             UIManager.s_instance.ShowLosePanel();
         }
