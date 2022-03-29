@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ConfigManager : MonoBehaviour
@@ -33,4 +34,18 @@ public class ConfigManager : MonoBehaviour
     }
 
     #endregion
+
+    public void UnloadScene()
+    {
+        StartCoroutine(this.CRUnloadScene(1));
+    }
+
+    IEnumerator CRUnloadScene(int index)
+    {
+        AudioManager.s_instance.PlayButtonClick();
+
+        yield return new WaitForSeconds(AudioManager.s_instance.GetButtonClick().length);
+
+        SceneManager.UnloadSceneAsync(index);
+    }
 }

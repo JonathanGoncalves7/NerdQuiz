@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2101252179}
         m_TargetAssemblyTypeName: CRLoadScene, Assembly-CSharp
-        m_MethodName: OnCLickLoadSceneWithButtonClickAudio
+        m_MethodName: OnCLickLoadAdditiveScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -449,7 +449,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -457,14 +456,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1079,7 +1070,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2101252179}
         m_TargetAssemblyTypeName: CRLoadScene, Assembly-CSharp
-        m_MethodName: OnCLickLoadSceneWithButtonClickAudio
+        m_MethodName: OnCLickLoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1997,17 +1988,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7343852815892965390, guid: 05147a1faf2bcb64ab40e11172bb2186, type: 3}
-      propertyPath: BGMList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7343852815892965390, guid: 05147a1faf2bcb64ab40e11172bb2186, type: 3}
-      propertyPath: BGMList.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: ceffdf527c0aaa24a90cb87552260878, type: 3}
-    - target: {fileID: 7343852815892965390, guid: 05147a1faf2bcb64ab40e11172bb2186, type: 3}
-      propertyPath: BGMList.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8c4efe45f14b7a14284a267bff53bbe9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05147a1faf2bcb64ab40e11172bb2186, type: 3}

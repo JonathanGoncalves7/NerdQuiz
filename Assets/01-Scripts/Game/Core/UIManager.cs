@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(CRLoadScene))]
 public class UIManager : MonoBehaviour
 {
     public static UIManager s_instance;
@@ -9,10 +11,18 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject WinPanel;
     [SerializeField] GameObject LosePanel;
+    [SerializeField] GameObject PausePanel;
+
+    CRLoadScene loadScene;
 
     private void Awake()
     {
         s_instance = this;
+    }
+
+    private void Start()
+    {
+        loadScene = GetComponent<CRLoadScene>();
     }
 
     public void ShowWinPanel()
@@ -35,5 +45,27 @@ public class UIManager : MonoBehaviour
     {
         LosePanel.SetActive(false);
         GameManager.s_instance.RestartQuiz();
+    }
+
+    public void OnClickPause()
+    {
+        AudioManager.s_instance.PlayButtonClick();
+        PausePanel.SetActive(true);
+    }
+
+    public void OnClickResume()
+    {
+        AudioManager.s_instance.PlayButtonClick();
+        PausePanel.SetActive(false);
+    }
+
+    public void OnClickMenu()
+    {
+        loadScene.OnCLickLoadScene(0);
+    }
+
+    public void OnClickConfig()
+    {
+        loadScene.OnCLickLoadAdditiveScene(1);
     }
 }
