@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78aef3ef74bd51444b3d1d47fb40a732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSourceBGM: {fileID: 1306654191839159462}
-  audioSourceSFX: {fileID: 6489549340314129268}
+  AudioSourceBGM: {fileID: 1306654191839159462}
+  AudioSourceSFX: {fileID: 6489549340314129268}
   BGMList:
   - {fileID: 8300000, guid: ceffdf527c0aaa24a90cb87552260878, type: 3}
   - {fileID: 8300000, guid: 8c4efe45f14b7a14284a267bff53bbe9, type: 3}

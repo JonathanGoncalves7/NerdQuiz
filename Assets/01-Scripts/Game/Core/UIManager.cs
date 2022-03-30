@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TMP_Text ProgressText;
 
-    CRLoadScene loadScene;
+    CRLoadScene _loadScene;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        loadScene = GetComponent<CRLoadScene>();
+        _loadScene = GetComponent<CRLoadScene>();
     }
 
     private void OnEnable()
@@ -66,12 +66,12 @@ public class UIManager : MonoBehaviour
 
     public void OnClickMenu()
     {
-        loadScene.OnCLickLoadScene(0);
+        _loadScene.OnCLickLoadScene(0);
     }
 
     public void OnClickConfig()
     {
-        loadScene.OnCLickLoadAdditiveScene(1);
+        _loadScene.OnCLickLoadAdditiveScene(1);
     }
 
     private void GameManager_OnQuestionChanged(int currentIndex, int totalIndex)

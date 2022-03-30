@@ -10,8 +10,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager s_instance;
 
-    [SerializeField] AudioSource audioSourceBGM;
-    [SerializeField] AudioSource audioSourceSFX;
+    [SerializeField] AudioSource AudioSourceBGM;
+    [SerializeField] AudioSource AudioSourceSFX;
 
     [SerializeField] List<AudioClip> BGMList;
     [SerializeField] AudioClip ButtonClick;
@@ -39,8 +39,8 @@ public class AudioManager : MonoBehaviour
 
     private void IniAudioVolume()
     {
-        audioSourceBGM.volume = GetPPVolumeBGM();
-        audioSourceSFX.volume = GetPPVolumeSFX();
+        AudioSourceBGM.volume = GetPPVolumeBGM();
+        AudioSourceSFX.volume = GetPPVolumeSFX();
     }
 
     public float GetPPVolumeBGM()
@@ -64,12 +64,12 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeSFXVolume(float volume)
     {
-        ChangeVolume(audioSourceSFX, VOLUME_SFX, volume);
+        ChangeVolume(AudioSourceSFX, VOLUME_SFX, volume);
     }
 
     public void ChangeBGMVolume(float volume)
     {
-        ChangeVolume(audioSourceBGM, VOLUME_BGM, volume);
+        ChangeVolume(AudioSourceBGM, VOLUME_BGM, volume);
     }
 
     #endregion
@@ -85,12 +85,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip clip)
     {
-        PlayClip(audioSourceSFX, clip);
+        PlayClip(AudioSourceSFX, clip);
     }
 
     public void PlayBGM(AudioClip clip)
     {
-        PlayClip(audioSourceBGM, clip);
+        PlayClip(AudioSourceBGM, clip);
     }
 
     public void PlayButtonClick()

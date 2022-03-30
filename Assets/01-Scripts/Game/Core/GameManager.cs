@@ -8,18 +8,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager s_instance;
 
-    public List<QuestionDataSO> questionList;
+    [SerializeField] List<QuestionDataSO> questionList;
     int _currentQuestionIndex;
 
     [Header("Question UI")]
-    public TMP_Text question;
+    [SerializeField] TMP_Text question;
 
-    public List<AnswerButtonInfo> answerButtonList;
+    [SerializeField] List<AnswerButtonInfo> answerButtonList;
 
     [Header("Audio Clip")]
-    public AudioClip ButtonClickClip;
-    public List<AudioClip> WinClipList;
-    public List<AudioClip> LoseClipList;
+    [SerializeField] AudioClip ButtonClickClip;
+    [SerializeField] List<AudioClip> WinClipList;
+    [SerializeField] List<AudioClip> LoseClipList;
 
     [Header("Transaction")]
     [SerializeField] Animator transactionAnimator;
@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
     [Header("Finish")]
     [SerializeField] ParticleSystem FinishEffect;
 
-    QuestionDataSO currentQuestion;
-    UIShake uiShake;
+    QuestionDataSO _currentQuestion;
+    UIShake _UIShake;
 
     public static event System.Action<int, int> OnQuestionChanged;
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        uiShake = GetComponent<UIShake>();
+        _UIShake = GetComponent<UIShake>();
 
         IniQuiz();
         StartQuiz(false);
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
-        currentQuestion = GetQuestionInList();
+        _currentQuestion = GetQuestionInList();
         SetQuestion();
         SetSuffledAnswer();
 
@@ -101,17 +101,17 @@ public class GameManager : MonoBehaviour
 
     private void SetQuestion()
     {
-        question.text = currentQuestion.question;
+        question.text = _currentQuestion.question;
     }
 
     private void SetSuffledAnswer()
     {
         answerButtonList.Sort((a, b) => 1 - 2 * Random.Range(0, answerButtonList.Count));
 
-        answerButtonList[0].SetInfo(currentQuestion.correctAnswer, true);
-        answerButtonList[1].SetInfo(currentQuestion.wrongAnswer1, false);
-        answerButtonList[2].SetInfo(currentQuestion.wrongAnswer2, false);
-        answerButtonList[3].SetInfo(currentQuestion.wrongAnswer3, false);
+        answerButtonList[0].SetInfo(_currentQuestion.correctAnswer, true);
+        answerButtonList[1].SetInfo(_currentQuestion.wrongAnswer1, false);
+        answerButtonList[2].SetInfo(_currentQuestion.wrongAnswer2, false);
+        answerButtonList[3].SetInfo(_currentQuestion.wrongAnswer3, false);
     }
 
     public void VerifyClickAnswer(bool isCorrect, GameObject button)
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.s_instance.PlaySFX(GetRandonClip(LoseClipList));
 
-            uiShake.Shake();
+            _UIShake.Shake();
 
             UIManager.s_instance.ShowLosePanel();
         }

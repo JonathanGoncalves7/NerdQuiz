@@ -15,8 +15,6 @@ public class ConfigManager : MonoBehaviour
         IniSliderVolume();
     }
 
-    #region Slider Volume
-
     private void IniSliderVolume()
     {
         SFXSlider.value = AudioManager.s_instance.GetPPVolumeSFX();
@@ -32,8 +30,6 @@ public class ConfigManager : MonoBehaviour
     {
         AudioManager.s_instance.ChangeBGMVolume(BGMSlider.value);
     }
-
-    #endregion
 
     public void UnloadScene()
     {

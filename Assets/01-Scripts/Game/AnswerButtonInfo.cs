@@ -5,10 +5,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 public class AnswerButtonInfo : MonoBehaviour
 {
-    Animator animator;
-    Button button;
-    Image image;
-
     public Color NeutralColor;
     public Color CorrectColor;
     public Color WrongColor;
@@ -16,68 +12,68 @@ public class AnswerButtonInfo : MonoBehaviour
     public bool isCorrectAnswer = false;
     public string answer = string.Empty;
 
-    private TMP_Text text;
+    Animator _animator;
+    Button _button;
+    Image _image;
+    TMP_Text _text;
 
-    ColorBlock defaultColors;
-
-    bool isCanClick = false;
-
-
+    ColorBlock _defaultColors;
+    bool _canClick = false;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        button = GetComponent<Button>();
-        text = GetComponentInChildren<TMP_Text>();
-        image = GetComponent<Image>();
+        _animator = GetComponent<Animator>();
+        _button = GetComponent<Button>();
+        _text = GetComponentInChildren<TMP_Text>();
+        _image = GetComponent<Image>();
 
-        defaultColors = button.colors;
-        isCanClick = true;
+        _defaultColors = _button.colors;
+        _canClick = true;
     }
 
     public void OnClick()
     {
-        if (!isCanClick) return;
+        if (!_canClick) return;
 
         GameManager.s_instance.VerifyClickAnswer(isCorrectAnswer, gameObject);
     }
 
     public void SetInfo(string answer, bool isCorrectAnswer)
     {
-        button.colors = defaultColors;
+        _button.colors = _defaultColors;
 
         this.answer = answer;
         this.isCorrectAnswer = isCorrectAnswer;
 
-        text.text = answer;
-        isCanClick = true;
+        _text.text = answer;
+        _canClick = true;
     }
 
     public void PlayClickAnimation()
     {
-        animator.SetBool("PlayAnimation", true);
+        _animator.SetBool("PlayAnimation", true);
     }
 
     public void StopClickAnimation()
     {
-        animator.SetBool("PlayAnimation", false);
+        _animator.SetBool("PlayAnimation", false);
     }
 
     public void ChangeColor()
     {
         Color newColor = isCorrectAnswer ? CorrectColor : WrongColor;
 
-        var colors = button.colors;
+        var colors = _button.colors;
         colors.normalColor = newColor;
         colors.highlightedColor = newColor;
         colors.pressedColor = newColor;
         colors.selectedColor = newColor;
         colors.disabledColor = newColor;
-        button.colors = colors;
+        _button.colors = colors;
     }
 
     public void DisableClick()
     {
-        isCanClick = false;
+        _canClick = false;
     }
 }
