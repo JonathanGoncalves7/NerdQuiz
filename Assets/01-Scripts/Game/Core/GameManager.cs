@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public List<AudioClip> WinClipList;
     public List<AudioClip> LoseClipList;
 
+    [Header("Transaction")]
+    [SerializeField] Animator transactionAnimator;
+
     QuestionDataSO currentQuestion;
     UIShake uiShake;
 
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
         uiShake = GetComponent<UIShake>();
 
         IniQuiz();
-        StartQuiz();
+        StartQuiz(false);
     }
 
     #endregion Mono Function
@@ -50,13 +53,30 @@ public class GameManager : MonoBehaviour
         _currentQuestionIndex = 0;
     }
 
-    private void StartQuiz()
+    private void StartQuiz(bool playTransition = true)
     {
+        StartCoroutine(this.CRStartQuiz(playTransition));
+    }
+
+    IEnumerator CRStartQuiz(bool playTransition)
+    {
+        if (playTransition)
+        {
+            transactionAnimator.SetTrigger("Start");
+
+            yield return new WaitForSeconds(1.5f);
+        }
+
         currentQuestion = GetQuestionInList();
         SetQuestion();
         SetSuffledAnswer();
 
         OnQuestionChanged?.Invoke(_currentQuestionIndex, questionList.Count);
+
+        if (playTransition)
+        {
+            transactionAnimator.SetTrigger("End");
+        }
     }
 
     public void NextQuiz()
