@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726aabd01aaa52469583ee7236f3141, type: 3}
   m_Name: QuestionDataSO 5
   m_EditorClassIdentifier: 
-  question: Question 5
-  correctAnswer: Correct
-  wrongAnswer1: Worng 1
-  wrongAnswer2: Worng 2
-  wrongAnswer3: Worng 3
+  question: "Qual o n\xFAmero m\xEDnimo de jogadores numa partida de futebol?"
+  correctAnswer: 7
+  wrongAnswer1: 8
+  wrongAnswer2: 10
+  wrongAnswer3: 9
   theme: 0

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c726aabd01aaa52469583ee7236f3141, type: 3}
-  m_Name: QuestionDataSO 1
+  m_Name: QuestionDataSO 7
   m_EditorClassIdentifier: 
-  question: "Qual o livro mais vendido no mundo a seguir \xE0 B\xEDblia?"
-  correctAnswer: Dom Quixote
-  wrongAnswer1: "O Senhor dos An\xE9is"
-  wrongAnswer2: "O Pequeno Pr\xEDncipe"
-  wrongAnswer3: Um Conto de Duas Cidades
+  question: "Qual personagem folcl\xF3rico costuma ser agradado pelos ca\xE7adores
+    com a oferta de fumo?"
+  correctAnswer: Caipora
+  wrongAnswer1: Saci
+  wrongAnswer2: "Boitat\xE1"
+  wrongAnswer3: Negrinho do Pastoreio
   theme: 0

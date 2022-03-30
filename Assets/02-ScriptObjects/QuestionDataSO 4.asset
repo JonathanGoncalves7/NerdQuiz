@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726aabd01aaa52469583ee7236f3141, type: 3}
   m_Name: QuestionDataSO 4
   m_EditorClassIdentifier: 
-  question: Question 4
-  correctAnswer: Correct
-  wrongAnswer1: Worng 1
-  wrongAnswer2: Worng 2
-  wrongAnswer3: Worng 3
+  question: "O que a palavra legend significa em portugu\xEAs?"
+  correctAnswer: Lenda
+  wrongAnswer1: Legenda
+  wrongAnswer2: Conto
+  wrongAnswer3: "Hist\xF3ria"
   theme: 0

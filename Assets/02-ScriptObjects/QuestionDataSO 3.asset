@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726aabd01aaa52469583ee7236f3141, type: 3}
   m_Name: QuestionDataSO 3
   m_EditorClassIdentifier: 
-  question: Question 3
-  correctAnswer: Correct
-  wrongAnswer1: Worng 1
-  wrongAnswer2: Worng 2
-  wrongAnswer3: Worng 3
+  question: "Atualmente, quantos elementos qu\xEDmicos a tabela peri\xF3dica possui?"
+  correctAnswer: 118
+  wrongAnswer1: 109
+  wrongAnswer2: 113
+  wrongAnswer3: 108
   theme: 0

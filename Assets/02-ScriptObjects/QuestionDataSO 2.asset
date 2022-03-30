@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726aabd01aaa52469583ee7236f3141, type: 3}
   m_Name: QuestionDataSO 2
   m_EditorClassIdentifier: 
-  question: Question 2
-  correctAnswer: Correct
-  wrongAnswer1: Worng 1
-  wrongAnswer2: Worng 2
-  wrongAnswer3: Worng 3
+  question: "Quantas casas decimais tem o n\xFAmero pi?"
+  correctAnswer: Infinitas
+  wrongAnswer1: Duas
+  wrongAnswer2: Centenas
+  wrongAnswer3: Vinte
   theme: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c726aabd01aaa52469583ee7236f3141, type: 3}
-  m_Name: QuestionDataSO 1
+  m_Name: QuestionDataSO 8
   m_EditorClassIdentifier: 
-  question: "Qual o livro mais vendido no mundo a seguir \xE0 B\xEDblia?"
-  correctAnswer: Dom Quixote
-  wrongAnswer1: "O Senhor dos An\xE9is"
-  wrongAnswer2: "O Pequeno Pr\xEDncipe"
-  wrongAnswer3: Um Conto de Duas Cidades
+  question: "Em que per\xEDodo da pr\xE9-hist\xF3ria o fogo foi descoberto?"
+  correctAnswer: "Paleol\xEDtico"
+  wrongAnswer1: "Neol\xEDtico"
+  wrongAnswer2: "Per\xEDodo da Pedra Polida"
+  wrongAnswer3: "Idade M\xE9dia"
   theme: 0
