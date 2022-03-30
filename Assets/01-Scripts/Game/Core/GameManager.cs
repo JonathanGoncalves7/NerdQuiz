@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     [Header("Transaction")]
     [SerializeField] Animator transactionAnimator;
 
+    [Header("Finish")]
+    [SerializeField] ParticleSystem FinishEffect;
+
     QuestionDataSO currentQuestion;
     UIShake uiShake;
 
@@ -142,6 +145,7 @@ public class GameManager : MonoBehaviour
 
             if (_currentQuestionIndex == questionList.Count - 1)
             {
+                StartCoroutine(this.CRFinishEffect());
                 UIManager.s_instance.ShowFinishPanel();
             }
             else
@@ -162,5 +166,14 @@ public class GameManager : MonoBehaviour
     private AudioClip GetRandonClip(List<AudioClip> clipList)
     {
         return clipList[Random.Range(0, clipList.Count)];
+    }
+
+    IEnumerator CRFinishEffect()
+    {
+        FinishEffect.Play();
+
+        yield return new WaitForSeconds(2);
+
+        FinishEffect.Stop();
     }
 }
