@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public List<AudioClip> LoseClipList;
 
     QuestionDataSO currentQuestion;
+    UIShake uiShake;
 
     #region Mono Function
 
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        uiShake = GetComponent<UIShake>();
+
         IniQuiz();
         StartQuiz();
     }
@@ -116,17 +119,21 @@ public class GameManager : MonoBehaviour
             button.ChangeColor();
         });
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         if (isCorrect)
         {
             AudioManager.s_instance.PlaySFX(GetRandonClip(WinClipList));
+
+            //Particulas 
 
             UIManager.s_instance.ShowWinPanel();
         }
         else
         {
             AudioManager.s_instance.PlaySFX(GetRandonClip(LoseClipList));
+
+            uiShake.Shake();
 
             UIManager.s_instance.ShowLosePanel();
         }

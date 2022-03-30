@@ -45,6 +45,7 @@ public class AnswerButtonInfo : MonoBehaviour
     public void SetInfo(string answer, bool isCorrectAnswer)
     {
         button.colors = defaultColors;
+
         this.answer = answer;
         this.isCorrectAnswer = isCorrectAnswer;
 

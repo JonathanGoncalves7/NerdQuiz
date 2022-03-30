@@ -160,10 +160,10 @@ RectTransform:
   m_Father: {fileID: 1698533102}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -454.71402}
-  m_SizeDelta: {x: 1080, y: 1010.553}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.521}
+  m_AnchoredPosition: {x: 0, y: 5.300049}
+  m_SizeDelta: {x: 0, y: 10.599976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &13062109
 MonoBehaviour:
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6010b25e5638c3c4ba8d6589a95d9a0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc61742419b6dec4d853795422393053, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -739,7 +739,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinPanel: {fileID: 80552423}
   LosePanel: {fileID: 1697402251}
-  PausePanel: {fileID: 0}
 --- !u!4 &348593572
 Transform:
   m_ObjectHideFlags: 0
@@ -824,7 +823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6010b25e5638c3c4ba8d6589a95d9a0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc61742419b6dec4d853795422393053, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -852,6 +851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 462865691}
   - component: {fileID: 462865690}
+  - component: {fileID: 462865692}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -901,12 +901,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462865689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 138.86237, y: 403.44437, z: -172.75694}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &462865692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462865689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb3a322030d6d547a021690919c442a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 0.75
+  Magnitude: 15
+  PanelShake: {fileID: 1698533101}
 --- !u!1 &468380909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,10 +2473,10 @@ RectTransform:
   m_Father: {fileID: 1698533102}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.521}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 423.8}
-  m_SizeDelta: {x: 0, y: -1173.5}
+  m_AnchoredPosition: {x: 0, y: -76}
+  m_SizeDelta: {x: 0, y: -173.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1141293316
 MonoBehaviour:
@@ -2694,7 +2709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6010b25e5638c3c4ba8d6589a95d9a0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc61742419b6dec4d853795422393053, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2771,7 +2786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6010b25e5638c3c4ba8d6589a95d9a0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc61742419b6dec4d853795422393053, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2855,7 +2870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -81.494}
+  m_AnchoredPosition: {x: 0, y: -81.494995}
   m_SizeDelta: {x: 0, y: 162.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1331610623
@@ -3189,6 +3204,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 13062108}
     m_Modifications:
+    - target: {fileID: 2513447234239162344, guid: 5fe566626d969fb41a1869a5fa000822, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2513447234239162345, guid: 5fe566626d969fb41a1869a5fa000822, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
