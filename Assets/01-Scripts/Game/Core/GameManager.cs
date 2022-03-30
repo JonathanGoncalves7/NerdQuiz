@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager s_instance;
 
     public List<QuestionDataSO> questionList;
-    int currentQuestionIndex;
+    int _currentQuestionIndex;
 
     [Header("Question UI")]
     public TMP_Text question;
@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     QuestionDataSO currentQuestion;
     UIShake uiShake;
+
+    public static event System.Action<int, int> OnQuestionChanged;
 
     #region Mono Function
 
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
         questionList.Sort((a, b) => 1 - 2 * Random.Range(0, questionList.Count));
 
-        currentQuestionIndex = 0;
+        _currentQuestionIndex = 0;
     }
 
     private void StartQuiz()
@@ -53,11 +55,13 @@ public class GameManager : MonoBehaviour
         currentQuestion = GetQuestionInList();
         SetQuestion();
         SetSuffledAnswer();
+
+        OnQuestionChanged?.Invoke(_currentQuestionIndex, questionList.Count);
     }
 
     public void NextQuiz()
     {
-        if (currentQuestionIndex == questionList.Count - 1)
+        if (_currentQuestionIndex == questionList.Count - 1)
         {
             Debug.Log("Finish quiz");
 
@@ -65,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            currentQuestionIndex++;
+            _currentQuestionIndex++;
             StartQuiz();
         }
     }
@@ -78,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     private QuestionDataSO GetQuestionInList()
     {
-        return questionList[currentQuestionIndex];
+        return questionList[_currentQuestionIndex];
     }
 
     private void SetQuestion()

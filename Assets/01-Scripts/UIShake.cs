@@ -8,7 +8,6 @@ public class UIShake : MonoBehaviour
     [SerializeField] float Magnitude;
     [SerializeField] GameObject PanelShake;
 
-
     public void Shake()
     {
         StartCoroutine(this.CRShake());
