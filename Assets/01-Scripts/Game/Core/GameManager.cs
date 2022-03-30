@@ -81,17 +81,8 @@ public class GameManager : MonoBehaviour
 
     public void NextQuiz()
     {
-        if (_currentQuestionIndex == questionList.Count - 1)
-        {
-            Debug.Log("Finish quiz");
-
-            RestartQuiz();
-        }
-        else
-        {
-            _currentQuestionIndex++;
-            StartQuiz();
-        }
+        _currentQuestionIndex++;
+        StartQuiz();
     }
 
     public void RestartQuiz()
@@ -149,9 +140,14 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.s_instance.PlaySFX(GetRandonClip(WinClipList));
 
-            //Particulas 
-
-            UIManager.s_instance.ShowWinPanel();
+            if (_currentQuestionIndex == questionList.Count - 1)
+            {
+                UIManager.s_instance.ShowFinishPanel();
+            }
+            else
+            {
+                UIManager.s_instance.ShowWinPanel();
+            }
         }
         else
         {

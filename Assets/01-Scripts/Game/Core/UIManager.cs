@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager s_instance;
 
     [SerializeField] GameObject WinPanel;
+    [SerializeField] GameObject FinishPanel;
     [SerializeField] GameObject LosePanel;
 
     [SerializeField] TMP_Text ProgressText;
@@ -40,6 +41,11 @@ public class UIManager : MonoBehaviour
         WinPanel.SetActive(true);
     }
 
+    public void ShowFinishPanel()
+    {
+        FinishPanel.SetActive(true);
+    }
+
     public void ShowLosePanel()
     {
         LosePanel.SetActive(true);
@@ -54,6 +60,7 @@ public class UIManager : MonoBehaviour
     public void OnClickRestartQuestion()
     {
         LosePanel.SetActive(false);
+        FinishPanel.SetActive(false);
         GameManager.s_instance.RestartQuiz();
     }
 
