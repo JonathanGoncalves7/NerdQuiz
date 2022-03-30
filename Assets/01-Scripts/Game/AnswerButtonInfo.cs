@@ -65,9 +65,14 @@ public class AnswerButtonInfo : MonoBehaviour
 
     public void ChangeColor()
     {
+        Color newColor = isCorrectAnswer ? CorrectColor : WrongColor;
+
         var colors = button.colors;
-        colors.normalColor = isCorrectAnswer ? CorrectColor : WrongColor;
-        colors.selectedColor = isCorrectAnswer ? CorrectColor : WrongColor;
+        colors.normalColor = newColor;
+        colors.highlightedColor = newColor;
+        colors.pressedColor = newColor;
+        colors.selectedColor = newColor;
+        colors.disabledColor = newColor;
         button.colors = colors;
     }
 
