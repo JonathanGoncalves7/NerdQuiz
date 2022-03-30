@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject WinPanel;
     [SerializeField] GameObject LosePanel;
-    [SerializeField] GameObject PausePanel;
 
     CRLoadScene loadScene;
 
@@ -45,18 +44,6 @@ public class UIManager : MonoBehaviour
     {
         LosePanel.SetActive(false);
         GameManager.s_instance.RestartQuiz();
-    }
-
-    public void OnClickPause()
-    {
-        AudioManager.s_instance.PlayButtonClick();
-        PausePanel.SetActive(true);
-    }
-
-    public void OnClickResume()
-    {
-        AudioManager.s_instance.PlayButtonClick();
-        PausePanel.SetActive(false);
     }
 
     public void OnClickMenu()
